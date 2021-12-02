@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+  
+:root {
+    --bg-color: hsl(49 37% 94%);
+    --typewiterSpeed: 4s;
+    --typewriterCharacter: 19;
+}
+  
+.typing {
+    display: grid;
+    place-content: center;
+    text-align: center;
+}
+  
+body {
+    margin: 0;
+    font-family: "Source Code Pro", sans-serif;
+    height: 100vh;
+    width: 100vw;
+    background: var(--bg-color);
+
+    .container {
+        height: 100%;
+        width: 100%;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        overflow: hidden;
+  
+        section {
+          flex: none;
+          height: 100vh;
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          scroll-snap-align: start;
+
+        h1 {
+            font-size: clamp(1rem, 2rem + 1rem, 4rem);
+            position: relative;
+            font-family: "Source Code Pro", monospace;
+            position: relative;
+            bottom: 30px;
+        }
+      }
+    }
+}
+  
+
+  
+h1::before, h1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+  
+h1::before {
+    background: var(--bg-color);
+    animation: typewriter var(--typewiterSpeed) steps(var(--typewriterCharacter)) forwards;
+}
+  
+h1::after {
+    width: 0.125em;
+    background: black;
+    animation: typewriter var(--typewiterSpeed) steps(var(--typewriterCharacter)) forwards, blink 500ms steps(var(--typewriterCharacter)) infinite;
+}
+  
+.subtitle {
+    font-size: 2rem;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: fadeInUp 2s ease calc(var(--typewiterSpeed)) forwards;
+}
+  
+@keyframes typewriter {
+    to {
+      left: 100%;
+    }
+}
+  
+@keyframes blink {
+    to {
+      background: transparent;
+    }
+}
+  
+@keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
